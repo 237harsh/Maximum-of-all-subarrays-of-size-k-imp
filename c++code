@@ -1,0 +1,40 @@
+
+ vector<int> maxSlidingWindow(vector<int>& arr, int k) {
+         int i=0,j=0,n=arr.size();
+        list<int>l;
+        vector<int>v;
+        for(int i=0;i<k;i++)
+        {
+            while(l.size()>0&&l.back()<arr[i])//pop back smaller elements
+                 l.pop_back();
+                 
+                 l.push_back(arr[i]);
+                 
+        }
+        v.push_back(l.front());
+          
+      int  st=0;
+       if(arr[st]==l.front())//remove calculation;
+            l.pop_front();
+            st++;
+        for(int j=k;j<n;j++)
+        {
+           
+            
+             while(l.size()>0 && l.back()<arr[j])
+            {
+                l.pop_back();
+            }
+          l.push_back(arr[j]);
+           v.push_back(l.front());
+            if(arr[st]==l.front())
+            l.pop_front();
+            st++;
+        }
+        
+     
+        return v;
+    }
+    
+
+https://practice.geeksforgeeks.org/problems/maximum-of-all-subarrays-of-size-k3101/1/?page=1&category[]=sliding-window&sortBy=submissions#
